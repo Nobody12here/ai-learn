@@ -20,6 +20,20 @@ categorical_columns = df.select_dtypes(include="str").columns
 # plt.ylabel("Number of students")
 # plt.title("Exam score distribution")
 # plt.show()
-print(df['exam_score'].describe())
-print(df['exam_score'].sort_values(ascending=False).head(20))
-print((df['exam_score'] >= 95).sum())
+print(df["exam_score"].describe())
+print(df["exam_score"].sort_values(ascending=False).head(20))
+print((df["exam_score"] >= 95).sum())
+print(
+    df[
+        [
+            "study_hours_per_day",
+            "attendance_percentage",
+            "sleep_hours",
+            "social_media_hours",
+            "netflix_hours",
+            "mental_health_rating",
+            "exam_score",
+        ]
+    ].corr()["exam_score"].sort_values(ascending=False)
+)
+print(df.describe().T)
