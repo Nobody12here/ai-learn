@@ -6,7 +6,8 @@ preprocessor = model.named_steps["preprocess"]
 featurs = preprocessor.get_feature_names_out()
 linear_model = model.named_steps["model"]
 coeff = pd.DataFrame({"feature": featurs, "coefficient": linear_model.coef_})
-print(coeff.sort_values("coefficient",ascending=False).head(20))
+print(linear_model.coef_)
+print(coeff.sort_values("coefficient",ascending=False).head(50))
 
 student = {
     "age": 21,
