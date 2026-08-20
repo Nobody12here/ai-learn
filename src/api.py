@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.exceptions import HTTPException
 from pydantic import BaseModel, Field
-from src.model_service import predict_exam_score
+from .model_service import predict_exam_score
 import logging
 
 logging.basicConfig(
@@ -45,5 +45,5 @@ def predict(student: StudentModel):
         "prediction": round(float(prediction), 3),
         "model": "exam_score_model",
         "message": "Scores predicted sucessfully",
-        "status": "sucess",
+        "status": "success",
     }
