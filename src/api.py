@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI(debug=True)
 
 
+
 class StudentModel(BaseModel):
     age: int = Field(ge=17, le=25)
     gender: str
