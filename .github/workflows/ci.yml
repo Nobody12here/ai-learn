@@ -1,0 +1,25 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      - name: Install UV
+        run: pip install uv
+      - name: Install Dependencies
+        run: uv sync
+      - name: Run tests
+        run: uv run pytest
+      # - name: Build Docker image
+      #   run: docker build -t student-score-api .
