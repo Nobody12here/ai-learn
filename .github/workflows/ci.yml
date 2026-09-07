@@ -18,7 +18,10 @@ jobs:
       - name: Install UV
         run: pip install uv
       - name: Install Dependencies
-        run: uv sync
+        run: |
+          uv venv
+          uv pip install -e .
+          uv pip install pytest
       - name: Run tests
         run: uv run pytest
       # - name: Build Docker image
