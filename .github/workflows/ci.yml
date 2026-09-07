@@ -22,9 +22,8 @@ jobs:
       - name: Run tests
         run: |
           export PYTHONPATH="${PYTHONPATH}:${GITHUB_WORKSPACE}"
-
           uv run pytest tests/
         env:
           PYTHONPATH: ${{github.workspace}}
-      # - name: Build Docker image
-      #   run: docker build -t student-score-api .
+      - name: Build Docker image
+        run: docker build -t student-score-api .
