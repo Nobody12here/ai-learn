@@ -27,3 +27,8 @@ jobs:
           PYTHONPATH: ${{github.workspace}}
       - name: Build Docker image
         run: docker build -t student-score-api .
+      - name: Login to Dockerhub
+        uses: docker/login-actions@v3
+        with:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
