@@ -18,11 +18,13 @@ jobs:
       - name: Install UV
         run: pip install uv
       - name: Install Dependencies
-        run: |
-          uv venv
-          uv pip install -e .
-          uv pip install pytest
+        run: uv sync
       - name: Run tests
-        run: uv run pytest tests/
+        run: |
+          export PYTHONPATH="${PYTHONPATH}:${GITHUB_WORKSPACE}"
+
+          uv run pytest tests/
+        env:
+          PYTHONPATH: ${{github.workspace}}
       # - name: Build Docker image
       #   run: docker build -t student-score-api .
